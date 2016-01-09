@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First HTML5 Canvas</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <style>
+      canvas{
+        position:absolute;
+        top:0;
+        left:0;
+        z-index: -5;
+      }
+      #main-title, h2{
+        color:white;
+        font-family: 'Ubuntu', sans-serif;
+        text-align: center;
+        font-size: 4em;
+      }
+      h2{
+        font-size: 2em;
+      }
+      #main-content{
+        background-color: rgba(255,255,255,0.6);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .quadrant{
+        box-sizing:border-box;
+        width:50%;
+        float:left;
+      }
+      #grid-container::after{
+        clear:both;
+        content:"";
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <h1 id="main-title">Welcome to the Coder's Corner</h1>
+    <div id="main-content">
+      lorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amellorem ipsum dolor et amel
+      <div id="grid-container">
+        <div class="quadrant"><h2>Project 1</h2><br><br><br><br><br></div>
+        <div class="quadrant"><h2>Project 2</h2><br><br><br><br><br></div>
+        <div class="quadrant"><h2>Project 3</h2><br><br><br><br><br></div>
+        <div class="quadrant"><h2>Project 4</h2><br><br><br><br><br></div>
+      </div>
+    </div>
+    <script>
+      init();
+      animate();
+      window.onresize = init;
+      
+      
+      
+      function init(){
+        window.WIDTH = window.innerWidth;
+        if (document.body.clientHeight > window.innerHeight)
+          window.HEIGHT = document.body.clientHeight;
+        else  
+          window.HEIGHT = window.innerHeight;
+        window.ctx = document.getElementById("canvas").getContext("2d");
+        ctx.canvas.width = WIDTH;
+        ctx.canvas.height = HEIGHT;
+        ctx.fillStyle = "#333333";
+        ctx.strokeStyle = "#E0E0E0";
+      }
+      function animate(){
+        ctx.fillRect(0,0,WIDTH,HEIGHT);
+        for (var i =0; i < 20; i++){
+          ctx.strokeRect(Math.random()*WIDTH, Math.random()*HEIGHT, Math.random()*100, Math.random()*100);
+        }
+        //ctx.strokeRect(step++, step++, 50, 50);
+        window.requestAnimationFrame(animate);
+      }
+    </script>
+  </body>
+</html>
